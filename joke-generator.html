@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Joke Generator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 2.5rem;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 1rem;
+        }
+
+        .joke-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            min-height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .joke-box.setup {
+            font-weight: 500;
+        }
+
+        .joke-box.punchline {
+            color: #ffd700;
+            font-weight: bold;
+            margin-top: 15px;
+            font-size: 1.3rem;
+        }
+
+        .punchline-container {
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+            margin-bottom: 15px;
+            width: 100%;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.6);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 0.8s linear infinite;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .error {
+            color: #e74c3c;
+            padding: 15px;
+            background: #fadbd8;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .joke-type {
+            color: #667eea;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .joke-counter {
+            color: #999;
+            font-size: 0.9rem;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 25px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .joke-box {
+                padding: 20px;
+                font-size: 1rem;
+            }
+
+            button {
+                padding: 12px 30px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>😂 Joke Generator</h1>
+        <p class="subtitle">Get a random laugh every time!</p>
+        
+        <div class="error" id="error"></div>
+
+        <div class="joke-type" id="jokeType"></div>
+        <div class="joke-box setup" id="jokeSetup">Click the button to get a joke!</div>
+        
+        <div class="punchline-container">
+            <div class="joke-box punchline" id="jokePunchline"></div>
+        </div>
+
+        <button id="newJokeBtn" onclick="getJoke()">
+            Get New Joke 🎭
+        </button>
+
+        <button onclick="toggleJokeType()" style="background: #f39c12; margin-bottom: 0;">
+            Toggle: All Types 🔄
+        </button>
+
+        <div class="joke-counter">
+            <span id="jokeCount">0</span> jokes loaded • Using JokeAPI
+        </div>
+    </div>
+
+    <script>
+        let jokeCount = 0;
+        let useAllTypes = false;
+
+        // Fetch joke from JokeAPI
+        async function getJoke() {
+            const btn = document.getElementById('newJokeBtn');
+            const setupEl = document.getElementById('jokeSetup');
+            const punchlineEl = document.getElementById('jokePunchline');
+            const jokeTypeEl = document.getElementById('jokeType');
+            const errorEl = document.getElementById('error');
+
+            // Show loading state
+            btn.disabled = true;
+            btn.innerHTML = '<span class="loading"></span>Loading...';
+            errorEl.style.display = 'none';
+            setupEl.textContent = 'Loading...';
+            punchlineEl.textContent = '';
+            jokeTypeEl.textContent = '';
+
+            try {
+                // JokeAPI endpoint (free, no API key needed)
+                let url = 'https://v2.jokeapi.dev/joke/';
+                
+                if (useAllTypes) {
+                    url += 'Any';
+                } else {
+                    url += 'General,Knock-Knock';
+                }
+
+                url += '?type=twopart';
+
+                const response = await fetch(url);
+
+                if (!response.ok) {
+                    throw new Error('Failed to fetch joke');
+                }
+
+                const data = await response.json();
+
+                // Check if joke was found
+                if (data.error) {
+                    throw new Error('Could not retrieve joke');
+                }
+
+                // Display joke
+                setupEl.textContent = data.setup;
+                punchlineEl.textContent = data.delivery;
+                jokeTypeEl.textContent = `${data.category} • ${data.type}`;
+
+                jokeCount++;
+                document.getElementById('jokeCount').textContent = jokeCount;
+
+            } catch (error) {
+                errorEl.style.display = 'block';
+                errorEl.textContent = '❌ ' + error.message + '. Please try again!';
+                setupEl.textContent = 'Oops! Could not load joke.';
+                punchlineEl.textContent = '';
+                jokeTypeEl.textContent = '';
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = 'Get New Joke 🎭';
+            }
+        }
+
+        function toggleJokeType() {
+            useAllTypes = !useAllTypes;
+            const btn = document.querySelector('button:nth-of-type(2)');
+            btn.textContent = useAllTypes ? 'Toggle: Family-Safe Only ✨' : 'Toggle: All Types 🔄';
+            getJoke();
+        }
+
+        // Load a joke on page load
+        getJoke();
+
+        // Allow Enter key to get new joke
+        document.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                getJoke();
+            }
+        });
+    </script>
+</body>
+</html>
