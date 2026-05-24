@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Muhammad Hasby — Portofolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #080808;
+  --surface: #101010;
+  --surface2: #161616;
+  --border: #1e1e1e;
+  --border2: #2a2a2a;
+  --accent: #00e5b0;
+  --accent-dim: rgba(0,229,176,0.07);
+  --accent-dim2: rgba(0,229,176,0.12);
+  --text: #e8e8e8;
+  --muted: #555;
+  --muted2: #888;
+  --white: #ffffff;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;line-height:1.6;overflow-x:hidden}
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--accent)}
+
+/* NAV */
+nav{position:fixed;top:0;width:100%;z-index:200;background:rgba(8,8,8,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 5%;height:58px}
+.nav-logo{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:.12em;color:var(--accent)}
+.nav-links{display:flex;gap:2.2rem;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--accent)}
+
+/* HERO */
+#hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:110px 5% 80px;position:relative;overflow:hidden}
+.hero-grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(0,229,176,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(0,229,176,.025) 1px,transparent 1px);background-size:55px 55px;pointer-events:none;mask-image:radial-gradient(ellipse at 70% 50%,transparent 25%,black 65%)}
+.hero-glow{position:absolute;top:40%;left:55%;transform:translate(-50%,-50%);width:650px;height:650px;background:radial-gradient(circle,rgba(0,229,176,.06) 0%,transparent 60%);pointer-events:none}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(0,229,176,.35);color:var(--accent);font-size:.67rem;letter-spacing:.18em;text-transform:uppercase;padding:6px 14px;border-radius:2px;margin-bottom:1.6rem;width:fit-content}
+.hero-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(.8)}}
+.hero-name{font-family:'Bebas Neue',sans-serif;font-size:clamp(4rem,10.5vw,9.5rem);line-height:.88;letter-spacing:.01em;color:var(--white);margin-bottom:1.6rem}
+.hero-name .ac{color:var(--accent)}
+.hero-sub{max-width:520px;font-size:.92rem;color:#666;line-height:1.8;margin-bottom:2.5rem}
+.hero-sub strong{color:#999}
+.btns{display:flex;gap:.9rem;flex-wrap:wrap}
+.btn-p{background:var(--accent);color:#080808;padding:12px 28px;border:none;border-radius:2px;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:7px;transition:all .2s}
+.btn-p:hover{background:#fff;transform:translateY(-2px)}
+.btn-o{background:transparent;color:var(--text);padding:12px 28px;border:1px solid var(--border2);border-radius:2px;font-size:.72rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:7px;transition:all .2s}
+.btn-o:hover{border-color:var(--accent);color:var(--accent)}
+.hero-stats{display:flex;gap:2.5rem;flex-wrap:wrap;margin-top:3.5rem;padding-top:2rem;border-top:1px solid var(--border)}
+.stat-n{font-family:'Bebas Neue',sans-serif;font-size:2.6rem;color:var(--accent);line-height:1}
+.stat-l{font-size:.65rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-top:2px}
+
+/* SECTION COMMON */
+.s-wrap{max-width:1100px;margin:0 auto;padding:6rem 5%}
+.s-tag{font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:.4rem}
+.s-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,5vw,4.2rem);line-height:.92;color:var(--white);margin-bottom:2.8rem}
+
+/* ABOUT */
+.about-layout{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+.photo-gallery{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.photo-main{grid-column:1/-1;height:320px;background:var(--surface2);border:1px solid var(--border);border-radius:4px;overflow:hidden;position:relative}
+.photo-main img{width:100%;height:100%;object-fit:cover;object-position:top center;transition:transform .4s}
+.photo-main:hover img{transform:scale(1.03)}
+.photo-sm{height:160px;background:var(--surface2);border:1px solid var(--border);border-radius:4px;overflow:hidden;position:relative}
+.photo-sm img{width:100%;height:100%;object-fit:cover;object-position:top center;transition:transform .4s}
+.photo-sm:hover img{transform:scale(1.05)}
+.photo-placeholder{width:100%;height:100%;background:linear-gradient(135deg,#0d1f1b,var(--surface2));display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:3.5rem;color:var(--accent)}
+.about-bio{font-size:.9rem;color:#777;line-height:1.9;margin-bottom:1.6rem}
+.about-bio strong{color:var(--white)}
+.about-bio .hl{color:var(--accent);font-weight:600}
+.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:.7rem}
+.info-box{background:var(--surface);border:1px solid var(--border);padding:.85rem 1rem;border-radius:3px}
+.info-lbl{font-size:.6rem;color:var(--muted);text-transform:uppercase;letter-spacing:.12em;margin-bottom:3px}
+.info-val{font-size:.82rem;color:var(--text);font-weight:500}
+
+/* EXPERIENCE */
+#experience{border-top:1px solid var(--border)}
+.exp-card{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:4px;overflow:hidden;margin-bottom:1.5rem}
+.exp-header{padding:2rem 2.2rem 1.5rem;border-bottom:1px solid var(--border)}
+.exp-top{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:.5rem;margin-bottom:.3rem}
+.exp-title{font-size:1.05rem;font-weight:700;color:var(--white)}
+.exp-period{font-size:.7rem;color:var(--accent);background:var(--accent-dim2);padding:4px 10px;border-radius:2px;letter-spacing:.04em;white-space:nowrap}
+.exp-org{font-size:.8rem;color:#555;margin-bottom:.9rem}
+.exp-badges{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:1rem}
+.badge{font-size:.6rem;text-transform:uppercase;letter-spacing:.1em;border:1px solid rgba(0,229,176,.35);color:var(--accent);padding:3px 9px;border-radius:2px}
+.exp-points{list-style:none;display:flex;flex-direction:column;gap:5px}
+.exp-points li{font-size:.83rem;color:#6a6a6a;padding-left:1.1rem;position:relative}
+.exp-points li::before{content:'→';position:absolute;left:0;color:var(--accent);font-size:.7rem;top:3px}
+
+/* PROGRAM GRID */
+.program-section{padding:1.8rem 2.2rem}
+.prog-header{font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:10px;margin-bottom:1.2rem}
+.prog-header::after{content:'';flex:1;height:1px;background:var(--border2)}
+.programs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.9rem}
+.prog-card{background:var(--surface2);border:1px solid var(--border2);border-radius:4px;overflow:hidden;transition:all .2s;cursor:pointer;text-decoration:none;display:block}
+.prog-card:hover{border-color:rgba(0,229,176,.3);transform:translateY(-3px)}
+.prog-img{width:100%;height:140px;object-fit:cover;display:block;background:var(--bg)}
+.prog-img-ph{width:100%;height:140px;background:linear-gradient(135deg,#0a1a15,var(--surface2));display:flex;align-items:center;justify-content:center;font-size:2rem}
+.prog-body{padding:.85rem .9rem}
+.prog-tag{font-size:.58rem;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);margin-bottom:.3rem}
+.prog-name{font-size:.82rem;font-weight:600;color:var(--white);line-height:1.3;margin-bottom:.25rem}
+.prog-desc{font-size:.73rem;color:#555;line-height:1.5}
+
+/* REPORT CARD */
+.report-card{margin:0 2.2rem 2rem;background:var(--surface2);border:1px solid var(--border2);border-radius:4px;padding:1.2rem 1.4rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.report-info .report-lbl{font-size:.6rem;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin-bottom:3px}
+.report-info .report-name{font-size:.9rem;font-weight:600;color:var(--white)}
+.report-info .report-sub{font-size:.75rem;color:#555}
+.btn-report{background:var(--accent);color:#080808;padding:9px 18px;border-radius:2px;font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;white-space:nowrap;transition:all .2s;display:inline-flex;align-items:center;gap:6px}
+.btn-report:hover{background:#fff}
+
+/* SKILLS */
+#skills{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.skills-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}
+.skill-group{background:var(--bg);border:1px solid var(--border);padding:1.4rem;border-radius:4px}
+.skill-g-title{font-size:.63rem;text-transform:uppercase;letter-spacing:.15em;color:var(--accent);margin-bottom:.8rem;display:flex;align-items:center;gap:8px}
+.skill-g-title span{font-size:1rem}
+.skill-tags{display:flex;flex-wrap:wrap;gap:6px}
+.stag{background:var(--surface2);border:1px solid var(--border);color:#888;font-size:.74rem;padding:5px 11px;border-radius:2px;transition:all .2s}
+.stag:hover{border-color:var(--accent);color:var(--accent)}
+
+/* CERTIFICATES */
+#certificates{border-top:1px solid var(--border)}
+.certs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.cert-card{background:var(--surface);border:1px solid var(--border);border-radius:4px;overflow:hidden;text-decoration:none;display:block;transition:all .25s;position:relative}
+.cert-card:hover{border-color:rgba(0,229,176,.3);transform:translateY(-4px);box-shadow:0 14px 40px rgba(0,0,0,.4)}
+.cert-img-wrap{width:100%;height:180px;background:var(--surface2);overflow:hidden;position:relative}
+.cert-img-wrap img{width:100%;height:100%;object-fit:cover;object-position:top center;transition:transform .3s}
+.cert-card:hover .cert-img-wrap img{transform:scale(1.04)}
+.cert-img-ph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:2.5rem;background:linear-gradient(135deg,#0a1a15,var(--surface2))}
+.cert-label{padding:1rem 1.1rem}
+.cert-year{font-size:.6rem;color:var(--accent);letter-spacing:.15em;text-transform:uppercase;margin-bottom:.3rem}
+.cert-name{font-size:.82rem;font-weight:600;color:var(--white);line-height:1.35;margin-bottom:.2rem}
+.cert-issuer{font-size:.71rem;color:#555}
+.cert-arrow{position:absolute;top:.8rem;right:.8rem;font-size:.75rem;color:var(--border2);transition:color .2s}
+.cert-card:hover .cert-arrow{color:var(--accent)}
+
+/* CONTACT */
+#contact{border-top:1px solid var(--border)}
+.contact-box{background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:3.5rem}
+.contact-intro{font-size:.9rem;color:#666;margin-top:-.8rem;margin-bottom:2.2rem}
+.contact-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}
+.c-item{background:var(--surface2);border:1px solid var(--border);padding:1.2rem;border-radius:3px;text-decoration:none;transition:all .2s;display:block}
+.c-item:hover{border-color:var(--accent)}
+.c-lbl{font-size:.6rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px}
+.c-val{font-size:.84rem;color:var(--text)}
+.c-val.ac{color:var(--accent)}
+
+/* FOOTER */
+footer{border-top:1px solid var(--border);padding:2rem 5%;text-align:center;font-size:.7rem;color:var(--muted)}
+footer span{color:var(--accent)}
+
+/* LIGHTBOX */
+.lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:999;align-items:center;justify-content:center;backdrop-filter:blur(8px)}
+.lightbox.open{display:flex}
+.lightbox img{max-width:88vw;max-height:88vh;object-fit:contain;border-radius:4px;border:1px solid var(--border2)}
+.lb-close{position:absolute;top:1.5rem;right:2rem;font-size:2rem;color:var(--muted2);cursor:pointer;transition:color .2s;line-height:1;background:none;border:none}
+.lb-close:hover{color:var(--white)}
+
+/* ANIMATIONS */
+.fade-up{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+.fade-up.visible{opacity:1;transform:none}
+.fade-up:nth-child(2){transition-delay:.1s}
+.fade-up:nth-child(3){transition-delay:.2s}
+.fade-up:nth-child(4){transition-delay:.3s}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .about-layout{grid-template-columns:1fr}
+  .programs-grid{grid-template-columns:1fr 1fr}
+  .certs-grid{grid-template-columns:1fr 1fr}
+  .skills-grid{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+  .nav-links{display:none}
+  .photo-gallery{grid-template-columns:1fr}
+  .photo-main{grid-column:auto}
+  .programs-grid{grid-template-columns:1fr}
+  .certs-grid{grid-template-columns:1fr}
+  .contact-grid{grid-template-columns:1fr}
+  .hero-stats{gap:1.5rem}
+}
+</style>
+</head>
+<body>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lb" onclick="closeLB()">
+  <button class="lb-close" onclick="closeLB()">×</button>
+  <img id="lb-img" src="" alt="">
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">MH</div>
+  <ul class="nav-links">
+    <li><a href="#about">Tentang</a></li>
+    <li><a href="#experience">Pengalaman</a></li>
+    <li><a href="#skills">Keahlian</a></li>
+    <li><a href="#certificates">Sertifikat</a></li>
+    <li><a href="#contact">Kontak</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-tag"><span class="hero-dot"></span>Terbuka untuk Peluang Baru</div>
+  <h1 class="hero-name">MUHAMMAD<br><span class="ac">HASBY</span></h1>
+  <p class="hero-sub">
+    <strong>S.Pd. Pendidikan Bahasa & Sastra Indonesia</strong> · Undiksha 2025<br>
+    Komunikasi strategis, konten digital, edukasi — membangun dampak nyata lewat kata dan visual.
+  </p>
+  <div class="btns">
+    <a href="#contact" class="btn-p">Hubungi Saya →</a>
+    <a href="https://drive.google.com/file/d/1ahR1cqYalGoq8qvkexm893OzgMIlfDxd/view" target="_blank" class="btn-o">Download CV ↓</a>
+  </div>
+  <div class="hero-stats">
+    <div><div class="stat-n">3,69</div><div class="stat-l">IPK / 4,00</div></div>
+    <div><div class="stat-n">7+</div><div class="stat-l">Bulan Magang</div></div>
+    <div><div class="stat-n">6</div><div class="stat-l">Program Kerja</div></div>
+    <div><div class="stat-n">6+</div><div class="stat-l">Sertifikat</div></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="s-wrap">
+    <div class="s-tag fade-up">// 01 — Tentang Saya</div>
+    <h2 class="s-title fade-up">PROFIL<br>PROFESIONAL</h2>
+    <div class="about-layout">
+      <!-- Photo Gallery -->
+      <div class="photo-gallery fade-up">
+        <div class="photo-main" onclick="openLB('https://lh3.googleusercontent.com/d/1bv_BCKj6qnUnM__LETq06jXTQqOHHZNw')" style="cursor:zoom-in">
+          <img src="https://lh3.googleusercontent.com/d/1bv_BCKj6qnUnM__LETq06jXTQqOHHZNw" alt="Muhammad Hasby" onerror="this.parentNode.innerHTML='<div class=\'photo-placeholder\'>MH</div>'">
+        </div>
+        <div class="photo-sm" onclick="openLB('https://lh3.googleusercontent.com/d/19VYR-4jMpsv-eqT4zy1gyBOS7gnRIXs-')" style="cursor:zoom-in">
+          <img src="https://lh3.googleusercontent.com/d/19VYR-4jMpsv-eqT4zy1gyBOS7gnRIXs-" alt="Muhammad Hasby" onerror="this.parentNode.innerHTML='<div class=\'photo-placeholder\' style=\'height:100%\'>MH</div>'">
+        </div>
+        <div class="photo-sm" onclick="openLB('https://lh3.googleusercontent.com/d/1L608znDal3Biu1RAHBV5IofPzbYRgt6K')" style="cursor:zoom-in">
+          <img src="https://lh3.googleusercontent.com/d/1L608znDal3Biu1RAHBV5IofPzbYRgt6K" alt="Muhammad Hasby" onerror="this.parentNode.innerHTML='<div class=\'photo-placeholder\' style=\'height:100%\'>MH</div>'">
+        </div>
+        <div class="photo-sm" onclick="openLB('https://lh3.googleusercontent.com/d/1jpDvpeiF6Us6w80zsJsUjyvo7_-rjBER')" style="cursor:zoom-in">
+          <img src="https://lh3.googleusercontent.com/d/1jpDvpeiF6Us6w80zsJsUjyvo7_-rjBER" alt="Muhammad Hasby" onerror="this.parentNode.innerHTML='<div class=\'photo-placeholder\' style=\'height:100%\'>MH</div>'">
+        </div>
+        <div class="photo-sm" onclick="openLB('https://lh3.googleusercontent.com/d/1hTL7Nfp5xSbFcD2VIx49igyC_bqO1228')" style="cursor:zoom-in">
+          <img src="https://lh3.googleusercontent.com/d/1hTL7Nfp5xSbFcD2VIx49igyC_bqO1228" alt="Muhammad Hasby" onerror="this.parentNode.innerHTML='<div class=\'photo-placeholder\' style=\'height:100%\'>MH</div>'">
+        </div>
+      </div>
+      <!-- Bio -->
+      <div class="fade-up">
+        <p class="about-bio">
+          Lulusan <strong>Pendidikan Bahasa dan Sastra Indonesia (S.Pd.)</strong> dari Universitas Pendidikan Ganesha dengan IPK <span class="hl">3,69/4,00</span> dan predikat <span class="hl">Mahasiswa Berprestasi — Pujian</span>.
+          <br><br>
+          Memiliki pengalaman langsung di lapangan melalui program <strong>Kampus Mengajar Angkatan 7 — Kemendikbudristek</strong>, mengelola komunikasi strategis, produksi konten digital, dan program literasi di sekolah penugasan.
+          <br><br>
+          Berkomitmen pada pengembangan ekosistem bahasa dan sastra Indonesia melalui keterlibatan aktif di lokakarya, festival, dan diskusi akademik tingkat nasional.
+        </p>
+        <div class="info-grid">
+          <div class="info-box">
+            <div class="info-lbl">Universitas</div>
+            <div class="info-val">Undiksha — 2021–2025</div>
+          </div>
+          <div class="info-box">
+            <div class="info-lbl">Program Studi</div>
+            <div class="info-val">Pend. Bahasa & Sastra Indonesia</div>
+          </div>
+          <div class="info-box">
+            <div class="info-lbl">IPK & Predikat</div>
+            <div class="info-val">3,69 / 4,00 — Pujian ✦</div>
+          </div>
+          <div class="info-box">
+            <div class="info-lbl">Domisili</div>
+            <div class="info-val">Jakarta Timur, Indonesia</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="s-wrap">
+    <div class="s-tag fade-up">// 02 — Pengalaman Kerja</div>
+    <h2 class="s-title fade-up">REKAM JEJAK<br>PROFESIONAL</h2>
+
+    <!-- KM7 -->
+    <div class="exp-card fade-up">
+      <div class="exp-header">
+        <div class="exp-top">
+          <div class="exp-title">Guru Mitra — Teaching Assistant & Tim PUBDOK</div>
+          <div class="exp-period">Jan 2024 — Jul 2024</div>
+        </div>
+        <div class="exp-org">Kementerian Pendidikan, Kebudayaan, Riset, dan Teknologi (Kemendikbudristek) · Kampus Mengajar Angkatan 7</div>
+        <div class="exp-badges">
+          <span class="badge">Kampus Mengajar 7</span>
+          <span class="badge">MBKM</span>
+          <span class="badge">Teaching Assistant</span>
+          <span class="badge">PUBDOK</span>
+        </div>
+        <ul class="exp-points">
+          <li>Meningkatkan skor rata-rata literasi dan numerasi siswa melalui metode pembelajaran inovatif dan program berbasis permainan.</li>
+          <li>Merancang & mengeksekusi strategi konten media sosial program: narasi, timeline posting, dan tone of voice yang konsisten.</li>
+          <li>Memproduksi aset grafis (poster, feed, banner) dan videografi dokumentasi (teaser & aftermovie) kegiatan program.</li>
+          <li>Mengelola administrasi kelas, pengarsipan berkas, serta pelaporan akademik dan laporan akhir program.</li>
+          <li>Mengarsipkan ribuan aset visual ke cloud storage terstruktur untuk kebutuhan pelaporan dan promosi program.</li>
+        </ul>
+      </div>
+
+      <!-- Program Documentation Grid -->
+      <div class="program-section">
+        <div class="prog-header">Dokumentasi Program Kerja KM7</div>
+        <div class="programs-grid">
+          <a href="https://drive.google.com/file/d/16aUGLRMjXhDccOckCbTahbLz-oXPdfW8/view" target="_blank" class="prog-card" onclick="event.preventDefault();openLB('https://lh3.googleusercontent.com/d/16aUGLRMjXhDccOckCbTahbLz-oXPdfW8')">
+            <img class="prog-img" src="https://lh3.googleusercontent.com/d/16aUGLRMjXhDccOckCbTahbLz-oXPdfW8" alt="Persami & Festival Literasi Numerasi" onerror="this.outerHTML='<div class=\'prog-img-ph\'>🏕️</div>'">
+            <div class="prog-body">
+              <div class="prog-tag">Program Unggulan</div>
+              <div class="prog-name">Persami & Festival Literasi Numerasi</div>
+              <div class="prog-desc">Kegiatan perkemahan dan festival yang mengintegrasikan literasi dan numerasi secara menyenangkan.</div>
+            </div>
+          </a>
+          <a href="#" class="prog-card" onclick="event.preventDefault();openLB('https://lh3.googleusercontent.com/d/1YQb-CFydLY8rW855Q9PTjSmrCROhmfMQ')">
+            <img class="prog-img" src="https://lh3.googleusercontent.com/d/1YQb-CFydLY8rW855Q9PTjSmrCROhmfMQ" alt="Apotek Hidup" onerror="this.outerHTML='<div class=\'prog-img-ph\'>🌿</div>'">
+            <div class="prog-body">
+              <div class="prog-tag">Program Lingkungan</div>
+              <div class="prog-name">Apotek Hidup</div>
+              <div class="prog-desc">Program penanaman tanaman obat untuk mengedukasi siswa tentang keanekaragaman hayati lokal.</div>
+            </div>
+          </a>
+          <a href="#" class="prog-card" onclick="event.preventDefault();openLB('https://lh3.googleusercontent.com/d/1IRJ1ff1RFlu93EZ9W07KTPBvy6X28iXC')">
+            <img class="prog-img" src="https://lh3.googleusercontent.com/d/1IRJ1ff1RFlu93EZ9W07KTPBvy6X28iXC" alt="Penataan Perpustakaan" onerror="this.outerHTML='<div class=\'prog-img-ph\'>📚</div>'">
+            <div class="prog-body">
+              <div class="prog-tag">Program Literasi</div>
+              <div class="prog-name">Penataan Perpustakaan</div>
+              <div class="prog-desc">Revitalisasi perpustakaan sekolah agar lebih nyaman, tertata, dan mudah diakses seluruh siswa.</div>
+            </div>
+          </a>
+          <a href="#" class="prog-card" onclick="event.preventDefault();openLB('https://lh3.googleusercontent.com/d/1KRe8ejtEIjeGghLmqJPtHsMQulW1hekY')">
+            <img class="prog-img" src="https://lh3.googleusercontent.com/d/1KRe8ejtEIjeGghLmqJPtHsMQulW1hekY" alt="Trivial Wall" onerror="this.outerHTML='<div class=\'prog-img-ph\'>🧩</div>'">
+            <div class="prog-body">
+              <div class="prog-tag">Media Interaktif</div>
+              <div class="prog-name">Trivial Wall</div>
+              <div class="prog-desc">Instalasi dinding kuis interaktif yang mendorong budaya belajar mandiri di lingkungan sekolah.</div>
+            </div>
+          </a>
+          <a href="#" class="prog-card" onclick="event.preventDefault();openLB('https://lh3.googleusercontent.com/d/1IFnSHRWvo72BSKzhaLqPJVoxifG6xnVZ')">
+            <img class="prog-img" src="https://lh3.googleusercontent.com/d/1IFnSHRWvo72BSKzhaLqPJVoxifG6xnVZ" alt="Ular Tangga Numerasi" onerror="this.outerHTML='<div class=\'prog-img-ph\'>🎲</div>'">
+            <div class="prog-body">
+              <div class="prog-tag">Media Pembelajaran</div>
+              <div class="prog-name">Ular Tangga Numerasi & Tebak Rumus</div>
+              <div class="prog-desc">Media permainan edukatif berbasis numerasi yang membuat matematika lebih menyenangkan.</div>
+            </div>
+          </a>
+          <a href="#" class="prog-card" onclick="event.preventDefault();openLB('https://lh3.googleusercontent.com/d/1km_WZhINAMWIfh1PqT6zHa195BMCs8ue')">
+            <img class="prog-img" src="https://lh3.googleusercontent.com/d/1km_WZhINAMWIfh1PqT6zHa195BMCs8ue" alt="Membaca Nyaring" onerror="this.outerHTML='<div class=\'prog-img-ph\'>📖</div>'">
+            <div class="prog-body">
+              <div class="prog-tag">Program Literasi</div>
+              <div class="prog-name">Membaca Nyaring</div>
+              <div class="prog-desc">Program rutin membaca nyaring bersama untuk meningkatkan kemampuan literasi dan kepercayaan diri siswa.</div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Laporan Akhir -->
+      <div class="report-card">
+        <div class="report-info">
+          <div class="report-lbl">Dokumen Resmi</div>
+          <div class="report-name">Laporan Akhir Kampus Mengajar 7</div>
+          <div class="report-sub">Muhammad Hasby · Kemendikbudristek · 2024</div>
+        </div>
+        <a href="https://drive.google.com/file/d/1teU434VPyimeXEFRS9ubtidQdaXleXnQ/view" target="_blank" class="btn-report">Buka Laporan ↗</a>
+      </div>
+    </div>
+
+    <!-- Rumah Makan -->
+    <div class="exp-card fade-up" style="margin-bottom:0">
+      <div class="exp-header" style="border-bottom:none">
+        <div class="exp-top">
+          <div class="exp-title">Crew Restoran</div>
+          <div class="exp-period">Des 2023 — Jan 2024</div>
+        </div>
+        <div class="exp-org">Rumah Makan Padang</div>
+        <ul class="exp-points">
+          <li>Memberikan pelayanan kepada 50–80 pelanggan per shift dengan standar kecepatan dan keramahan tinggi.</li>
+          <li>Mengelola rekonsiliasi kas harian, pencatatan pendapatan, dan pelaporan keuangan toko secara akurat.</li>
+          <li>Mengawasi rotasi stok barang dan bahan baku pangan melalui sistem manajemen inventaris.</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="s-wrap">
+    <div class="s-tag fade-up">// 03 — Keahlian</div>
+    <h2 class="s-title fade-up">SKILL &<br>KOMPETENSI</h2>
+    <div class="skills-grid fade-up">
+      <div class="skill-group">
+        <div class="skill-g-title"><span>⚡</span> Software Suite</div>
+        <div class="skill-tags">
+          <span class="stag">Microsoft Word</span>
+          <span class="stag">Microsoft PowerPoint</span>
+          <span class="stag">Microsoft Excel</span>
+          <span class="stag">Google Workspace</span>
+          <span class="stag">Google Docs</span>
+          <span class="stag">Google Slides</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-g-title"><span>🎨</span> Media & Kreatif</div>
+        <div class="skill-tags">
+          <span class="stag">Canva Design</span>
+          <span class="stag">Copywriting</span>
+          <span class="stag">Video Production</span>
+          <span class="stag">CapCut</span>
+          <span class="stag">VN Editor</span>
+          <span class="stag">Social Media Management</span>
+          <span class="stag">Content Strategy</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-g-title"><span>💼</span> Profesional</div>
+        <div class="skill-tags">
+          <span class="stag">Administration Management</span>
+          <span class="stag">Public Speaking</span>
+          <span class="stag">Teaching Methodology</span>
+          <span class="stag">Creative Writing</span>
+          <span class="stag">Program Planning</span>
+          <span class="stag">Dokumentasi Visual</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-g-title"><span>🌐</span> Bahasa & Sastra</div>
+        <div class="skill-tags">
+          <span class="stag">Bahasa Indonesia — Native</span>
+          <span class="stag">English</span>
+          <span class="stag">Penulisan Kreatif</span>
+          <span class="stag">Deklamasi Puisi</span>
+          <span class="stag">Analisis Sastra</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATES -->
+<section id="certificates">
+  <div class="s-wrap">
+    <div class="s-tag fade-up">// 04 — Sertifikat & Penghargaan</div>
+    <h2 class="s-title fade-up">PENCAPAIAN &<br>PENGAKUAN</h2>
+    <div class="certs-grid fade-up">
+
+      <a href="https://drive.google.com/file/d/1J1G_FL8tuB7QUd_2hsRdX998csk6OE9g/view" target="_blank" class="cert-card">
+        <span class="cert-arrow">↗</span>
+        <div class="cert-img-wrap">
+          <img src="https://lh3.googleusercontent.com/d/1J1G_FL8tuB7QUd_2hsRdX998csk6OE9g" alt="Piagam Pujian" onerror="this.parentNode.innerHTML='<div class=\'cert-img-ph\'>🏆</div>'">
+        </div>
+        <div class="cert-label">
+          <div class="cert-year">2025</div>
+          <div class="cert-name">Piagam Penghargaan — Mahasiswa Berprestasi (Pujian)</div>
+          <div class="cert-issuer">Universitas Pendidikan Ganesha</div>
+        </div>
+      </a>
+
+      <a href="https://drive.google.com/file/d/1Vn9MHNjpXkICxnDhn8enrFcCZ3UcnzIY/view" target="_blank" class="cert-card">
+        <span class="cert-arrow">↗</span>
+        <div class="cert-img-wrap">
+          <img src="https://lh3.googleusercontent.com/d/1Vn9MHNjpXkICxnDhn8enrFcCZ3UcnzIY" alt="Lokakarya Puisi" onerror="this.parentNode.innerHTML='<div class=\'cert-img-ph\'>📜</div>'">
+        </div>
+        <div class="cert-label">
+          <div class="cert-year">2022</div>
+          <div class="cert-name">Lokakarya Cipta & Deklamasi Puisi</div>
+          <div class="cert-issuer">Dinas Kebudayaan Provinsi Bali</div>
+        </div>
+      </a>
+
+      <a href="https://drive.google.com/file/d/1h_9yctKw2ZNyS6WQz2FLkvdLazEv1nid/view" target="_blank" class="cert-card">
+        <span class="cert-arrow">↗</span>
+        <div class="cert-img-wrap">
+          <img src="https://lh3.googleusercontent.com/d/1h_9yctKw2ZNyS6WQz2FLkvdLazEv1nid" alt="Malam Gelar Seni" onerror="this.parentNode.innerHTML='<div class=\'cert-img-ph\'>🎭</div>'">
+        </div>
+        <div class="cert-label">
+          <div class="cert-year">2022</div>
+          <div class="cert-name">Piagam Malam Gelar Seni (MGS)</div>
+          <div class="cert-issuer">Festival Bahasa & Sastra · Undiksha</div>
+        </div>
+      </a>
+
+      <a href="https://drive.google.com/file/d/1V2-TVUU8cuZ85SiJZLNHvloEo7qR0jlp/view" target="_blank" class="cert-card">
+        <span class="cert-arrow">↗</span>
+        <div class="cert-img-wrap">
+          <img src="https://lh3.googleusercontent.com/d/1V2-TVUU8cuZ85SiJZLNHvloEo7qR0jlp" alt="Pengisi Acara Festival" onerror="this.parentNode.innerHTML='<div class=\'cert-img-ph\'>🎤</div>'">
+        </div>
+        <div class="cert-label">
+          <div class="cert-year">2023</div>
+          <div class="cert-name">Piagam Pengisi Acara Festival Bahasa & Sastra</div>
+          <div class="cert-issuer">HMJ BSID · Undiksha</div>
+        </div>
+      </a>
+
+      <a href="https://drive.google.com/file/d/1YVsU_bgKbSkBM03ZOfRTcjGFdQrwtaLY/view" target="_blank" class="cert-card">
+        <span class="cert-arrow">↗</span>
+        <div class="cert-img-wrap">
+          <img src="https://lh3.googleusercontent.com/d/1YVsU_bgKbSkBM03ZOfRTcjGFdQrwtaLY" alt="Orientasi Mahasiswa" onerror="this.parentNode.innerHTML='<div class=\'cert-img-ph\'>🎓</div>'">
+        </div>
+        <div class="cert-label">
+          <div class="cert-year">2021</div>
+          <div class="cert-name">Piagam Penghargaan Orientasi Mahasiswa</div>
+          <div class="cert-issuer">Universitas Pendidikan Ganesha</div>
+        </div>
+      </a>
+
+      <div class="cert-card" style="cursor:default">
+        <div class="cert-img-wrap">
+          <div class="cert-img-ph">📚</div>
+        </div>
+        <div class="cert-label">
+          <div class="cert-year">2024</div>
+          <div class="cert-name">Diskusi Kebahasaan & Kesastraan DIKSI #13</div>
+          <div class="cert-issuer">HISKI Komisariat Bali</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="s-wrap">
+    <div class="contact-box">
+      <div class="s-tag fade-up">// 05 — Kontak</div>
+      <h2 class="s-title fade-up" style="margin-bottom:.6rem">MARI<br>TERHUBUNG</h2>
+      <p class="contact-intro fade-up">Terbuka untuk peluang kerja, kolaborasi, dan diskusi profesional.</p>
+      <div class="contact-grid fade-up">
+        <a href="mailto:mhasbi608@gmail.com" class="c-item">
+          <div class="c-lbl">📧 Email</div>
+          <div class="c-val ac">mhasbi608@gmail.com</div>
+        </a>
+        <a href="https://wa.me/6285161284276" target="_blank" class="c-item">
+          <div class="c-lbl">💬 WhatsApp</div>
+          <div class="c-val">+62 851 6128 4276</div>
+        </a>
+        <a href="https://www.linkedin.com/in/muhammad-hasby-93698437b/" target="_blank" class="c-item">
+          <div class="c-lbl">💼 LinkedIn</div>
+          <div class="c-val ac">Muhammad Hasby</div>
+        </a>
+        <a href="https://drive.google.com/file/d/1ahR1cqYalGoq8qvkexm893OzgMIlfDxd/view" target="_blank" class="c-item">
+          <div class="c-lbl">📄 Curriculum Vitae</div>
+          <div class="c-val ac">Download CV ↓</div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 <span>Muhammad Hasby</span> · S.Pd. Pendidikan Bahasa & Sastra Indonesia · Jakarta Timur, Indonesia</p>
+</footer>
+
+<script>
+// Lightbox
+function openLB(src){ const lb=document.getElementById('lb'); document.getElementById('lb-img').src=src; lb.classList.add('open'); document.body.style.overflow='hidden'; }
+function closeLB(){ document.getElementById('lb').classList.remove('open'); document.getElementById('lb-img').src=''; document.body.style.overflow=''; }
+document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeLB(); });
+
+// Scroll animations
+const obs = new IntersectionObserver((entries)=>{ entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); } }); }, {threshold:.07});
+document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
+
+// Active nav
+const secs = document.querySelectorAll('section[id]');
+const navAs = document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll',()=>{
+  let cur='';
+  secs.forEach(s=>{ if(window.scrollY>=s.offsetTop-80) cur=s.id; });
+  navAs.forEach(a=>{ a.classList.toggle('active', a.getAttribute('href')==='#'+cur); });
+});
+</script>
+</body>
+</html>
