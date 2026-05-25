@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Muhammad Hasby — Content Strategist & Educator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#080808;--surface:#101010;--surface2:#161616;--surface3:#1a1a1a;
+  --border:#1e1e1e;--border2:#2a2a2a;--border3:#333;
+  --accent:#00e5b0;--accent2:#00c49a;
+  --accent-dim:rgba(0,229,176,.07);--accent-dim2:rgba(0,229,176,.12);--accent-dim3:rgba(0,229,176,.18);
+  --text:#e8e8e8;--muted:#555;--muted2:#888;--white:#fff;
+  --gold:#d4a843;--gold-dim:rgba(212,168,67,.12);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;line-height:1.6;overflow-x:hidden}
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--accent);border-radius:2px}
+
+/* ─── NAV ─── */
+nav{position:fixed;top:0;width:100%;z-index:300;background:rgba(8,8,8,.93);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 5%;height:58px}
+.nav-logo{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:.12em;color:var(--accent)}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;transition:color .2s;padding-bottom:2px;border-bottom:1px solid transparent}
+.nav-links a:hover,.nav-links a.active{color:var(--accent);border-bottom-color:var(--accent)}
+.nav-cta{background:var(--accent);color:#080808;padding:7px 18px;border-radius:2px;font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;transition:all .2s}
+.nav-cta:hover{background:#fff}
+
+/* ─── HERO ─── */
+#hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:110px 5% 80px;position:relative;overflow:hidden}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(0,229,176,.022) 1px,transparent 1px),linear-gradient(90deg,rgba(0,229,176,.022) 1px,transparent 1px);background-size:58px 58px;pointer-events:none;mask-image:radial-gradient(ellipse at 75% 50%,transparent 20%,black 65%)}
+.hero-glow{position:absolute;top:38%;left:58%;transform:translate(-50%,-50%);width:700px;height:700px;background:radial-gradient(circle,rgba(0,229,176,.055) 0%,transparent 60%);pointer-events:none}
+/* POIN 6: Predikat Pujian sebagai callout utama hero */
+.hero-distinction{display:inline-flex;align-items:center;gap:10px;background:var(--gold-dim);border:1px solid rgba(212,168,67,.35);color:var(--gold);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;padding:8px 18px;border-radius:2px;margin-bottom:1.4rem;width:fit-content}
+.hero-distinction svg{width:14px;height:14px;fill:var(--gold)}
+/* POIN 1: Target posisi jelas */
+.hero-position{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(0,229,176,.3);color:var(--accent);font-size:.67rem;letter-spacing:.15em;text-transform:uppercase;padding:6px 14px;border-radius:2px;margin-bottom:1.6rem;width:fit-content}
+.hero-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:blink 2s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+.hero-name{font-family:'Bebas Neue',sans-serif;font-size:clamp(3.8rem,10vw,9rem);line-height:.88;letter-spacing:.01em;color:var(--white);margin-bottom:1.6rem}
+.hero-name .ac{color:var(--accent)}
+/* POIN 8: Bio dengan personal hook */
+.hero-hook{max-width:560px;font-size:1rem;color:#6a6a6a;line-height:1.8;margin-bottom:2.5rem;font-style:italic}
+.hero-hook strong{color:#999;font-style:normal}
+.hero-hook .hl{color:var(--accent);font-style:normal;font-weight:600}
+.btns{display:flex;gap:.9rem;flex-wrap:wrap}
+.btn-p{background:var(--accent);color:#080808;padding:13px 28px;border:none;border-radius:2px;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:all .2s}
+.btn-p:hover{background:#fff;transform:translateY(-2px)}
+.btn-o{background:transparent;color:var(--text);padding:13px 28px;border:1px solid var(--border2);border-radius:2px;font-size:.72rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:all .2s}
+.btn-o:hover{border-color:var(--accent);color:var(--accent)}
+.hero-stats{display:flex;gap:2.5rem;flex-wrap:wrap;margin-top:3.5rem;padding-top:2rem;border-top:1px solid var(--border)}
+.stat-n{font-family:'Bebas Neue',sans-serif;font-size:2.6rem;color:var(--accent);line-height:1}
+.stat-n.gold{color:var(--gold)}
+.stat-l{font-size:.63rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-top:2px}
+
+/* ─── SECTIONS ─── */
+.s-wrap{max-width:1100px;margin:0 auto;padding:6rem 5%}
+.s-tag{font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:.4rem}
+.s-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.4rem,4.8vw,4rem);line-height:.92;color:var(--white);margin-bottom:2.8rem}
+.s-divider{border:none;border-top:1px solid var(--border);margin:0}
+
+/* ─── ABOUT ─── */
+.about-layout{display:grid;grid-template-columns:1fr 1.15fr;gap:4rem;align-items:start}
+.photo-main-wrap{position:relative;border-radius:4px;overflow:hidden;height:340px;border:1px solid var(--border);cursor:zoom-in}
+.photo-main-wrap img{width:100%;height:100%;object-fit:cover;object-position:top center;transition:transform .5s}
+.photo-main-wrap:hover img{transform:scale(1.04)}
+.photo-row{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:8px}
+.photo-thumb{height:90px;border-radius:3px;overflow:hidden;border:1px solid var(--border);cursor:zoom-in}
+.photo-thumb img{width:100%;height:100%;object-fit:cover;object-position:top center;transition:transform .4s}
+.photo-thumb:hover img{transform:scale(1.08)}
+.ph-init{width:100%;height:100%;background:linear-gradient(135deg,#0d1f1b,var(--surface2));display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:2.5rem;color:var(--accent)}
+/* POIN 6: Predikat badge di about */
+.distinction-badge{display:inline-flex;align-items:center;gap:7px;background:var(--gold-dim);border:1px solid rgba(212,168,67,.3);color:var(--gold);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;padding:7px 14px;border-radius:2px;margin-bottom:1.2rem}
+.about-bio{font-size:.9rem;color:#777;line-height:1.9;margin-bottom:1.5rem}
+.about-bio strong{color:var(--white)}
+.about-bio .hl{color:var(--accent);font-weight:600}
+.about-bio .gold{color:var(--gold);font-weight:600}
+.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:.65rem}
+.info-box{background:var(--surface);border:1px solid var(--border);padding:.8rem 1rem;border-radius:3px}
+.info-lbl{font-size:.58rem;color:var(--muted);text-transform:uppercase;letter-spacing:.12em;margin-bottom:3px}
+.info-val{font-size:.82rem;color:var(--text);font-weight:500}
+
+/* ─── EXPERIENCE ─── */
+#experience{border-top:1px solid var(--border)}
+/* POIN 3: KM7 framing */
+.km7-banner{background:linear-gradient(135deg,rgba(0,229,176,.06),transparent);border:1px solid rgba(0,229,176,.2);border-radius:4px;padding:1.2rem 1.5rem;margin-bottom:1.8rem;display:flex;align-items:flex-start;gap:1rem}
+.km7-icon{font-size:2rem;flex-shrink:0}
+.km7-banner-title{font-size:.72rem;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.2rem}
+.km7-banner-desc{font-size:.8rem;color:#666;line-height:1.6}
+.km7-banner-desc strong{color:#999}
+.exp-card{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:4px;overflow:hidden;margin-bottom:1.5rem}
+.exp-header{padding:2rem 2.2rem 1.6rem}
+.exp-top{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:.5rem;margin-bottom:.3rem}
+.exp-title{font-size:1.05rem;font-weight:700;color:var(--white)}
+.exp-period{font-size:.7rem;color:var(--accent);background:var(--accent-dim2);padding:4px 10px;border-radius:2px;letter-spacing:.04em;white-space:nowrap}
+.exp-org{font-size:.8rem;color:#555;margin-bottom:.8rem}
+.exp-badges{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:1rem}
+.badge{font-size:.6rem;text-transform:uppercase;letter-spacing:.1em;border:1px solid rgba(0,229,176,.3);color:var(--accent);padding:3px 9px;border-radius:2px}
+/* POIN 2: Impact bullets */
+.exp-impacts{list-style:none;display:flex;flex-direction:column;gap:.6rem;margin-bottom:0}
+.impact-item{display:flex;gap:.9rem;align-items:flex-start}
+.impact-metric{background:var(--accent-dim2);border:1px solid rgba(0,229,176,.25);border-radius:3px;padding:6px 10px;text-align:center;flex-shrink:0;min-width:58px}
+.impact-num{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;color:var(--accent);line-height:1;display:block}
+.impact-unit{font-size:.55rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;display:block}
+.impact-text{font-size:.84rem;color:#6a6a6a;line-height:1.6;padding-top:4px}
+.impact-text strong{color:#999}
+.prog-section{padding:1.6rem 2.2rem;border-top:1px solid var(--border)}
+.prog-hdr{font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:10px;margin-bottom:1.2rem}
+.prog-hdr::after{content:'';flex:1;height:1px;background:var(--border2)}
+.prog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.85rem}
+.prog-card{background:var(--surface2);border:1px solid var(--border2);border-radius:4px;overflow:hidden;transition:all .25s;cursor:pointer;text-decoration:none;display:block}
+.prog-card:hover{border-color:rgba(0,229,176,.3);transform:translateY(-3px);box-shadow:0 10px 30px rgba(0,0,0,.3)}
+.prog-img{width:100%;height:130px;object-fit:cover;display:block;background:var(--bg)}
+.prog-img-ph{width:100%;height:130px;background:linear-gradient(135deg,#0a1a15,var(--surface2));display:flex;align-items:center;justify-content:center;font-size:1.8rem}
+.prog-body{padding:.8rem .9rem}
+.prog-tag{font-size:.58rem;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);margin-bottom:.25rem}
+.prog-name{font-size:.8rem;font-weight:600;color:var(--white);line-height:1.3;margin-bottom:.2rem}
+.prog-desc{font-size:.72rem;color:#555;line-height:1.45}
+.report-bar{margin:0 2.2rem 1.8rem;background:var(--surface2);border:1px solid var(--border2);border-radius:4px;padding:1.1rem 1.4rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.report-info .r-lbl{font-size:.58rem;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin-bottom:3px}
+.report-info .r-name{font-size:.9rem;font-weight:700;color:var(--white)}
+.report-info .r-sub{font-size:.73rem;color:#555}
+.btn-sm{background:var(--accent);color:#080808;padding:8px 16px;border-radius:2px;font-size:.67rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;white-space:nowrap;transition:all .2s;display:inline-flex;align-items:center;gap:5px}
+.btn-sm:hover{background:#fff}
+/* POIN 7: Reframe Rumah Makan */
+.exp-card.secondary{border-left-color:var(--border3)}
+.transfer-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:.8rem}
+.ttag{font-size:.62rem;background:var(--surface2);border:1px solid var(--border2);color:var(--muted2);padding:3px 9px;border-radius:2px}
+
+/* ─── KARYA / PROYEK (POIN 4 — seksi baru) ─── */
+#karya{border-top:1px solid var(--border)}
+.karya-tabs{display:flex;gap:0;margin-bottom:2rem;border:1px solid var(--border);border-radius:3px;overflow:hidden;width:fit-content}
+.ktab{background:transparent;color:var(--muted);border:none;padding:10px 22px;font-family:'DM Sans',sans-serif;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:all .2s;border-right:1px solid var(--border)}
+.ktab:last-child{border-right:none}
+.ktab.active{background:var(--accent);color:#080808;font-weight:700}
+.ktab:hover:not(.active){color:var(--text);background:var(--surface)}
+.karya-panel{display:none}
+.karya-panel.active{display:block}
+/* Design grid */
+.design-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.design-card{background:var(--surface);border:1px solid var(--border);border-radius:4px;overflow:hidden;cursor:zoom-in;transition:all .25s;display:block}
+.design-card:hover{border-color:rgba(0,229,176,.3);transform:translateY(-3px)}
+.design-img{width:100%;height:200px;object-fit:cover;display:block;background:var(--surface2)}
+.design-img-ph{width:100%;height:200px;background:linear-gradient(135deg,#0a1a15,var(--surface2));display:flex;align-items:center;justify-content:center;font-size:2.5rem}
+.design-label{padding:.85rem 1rem}
+.design-cat{font-size:.58rem;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);margin-bottom:.25rem}
+.design-name{font-size:.82rem;font-weight:600;color:var(--white)}
+/* Video grid */
+.video-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.2rem}
+.video-card{background:var(--surface);border:1px solid var(--border);border-radius:4px;overflow:hidden;transition:border-color .2s}
+.video-card:hover{border-color:rgba(0,229,176,.25)}
+.video-frame{width:100%;aspect-ratio:16/9;background:var(--bg)}
+.video-frame iframe{width:100%;height:100%;border:none;display:block}
+.video-label{padding:.9rem 1.1rem}
+.video-tag{font-size:.58rem;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);margin-bottom:.25rem}
+.video-name{font-size:.84rem;font-weight:600;color:var(--white);margin-bottom:.2rem}
+.video-desc{font-size:.73rem;color:#555;line-height:1.5}
+
+/* ─── SKILLS ─── */
+#skills{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.skills-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}
+.skill-group{background:var(--bg);border:1px solid var(--border);padding:1.4rem;border-radius:4px}
+.sg-title{font-size:.62rem;text-transform:uppercase;letter-spacing:.15em;color:var(--accent);margin-bottom:.85rem;display:flex;align-items:center;gap:8px}
+.sg-title span{font-size:.95rem}
+.stags{display:flex;flex-wrap:wrap;gap:6px}
+.stag{background:var(--surface2);border:1px solid var(--border);color:#888;font-size:.73rem;padding:5px 11px;border-radius:2px;transition:all .2s;cursor:default}
+.stag:hover{border-color:var(--accent);color:var(--accent)}
+.stag.proof{border-color:rgba(0,229,176,.2);color:#777}
+
+/* ─── CERTIFICATES (POIN 5) ─── */
+#certificates{border-top:1px solid var(--border)}
+.certs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.cert-card{background:var(--surface);border:1px solid var(--border);border-radius:4px;overflow:hidden;text-decoration:none;display:block;transition:all .25s;position:relative}
+.cert-card:hover{border-color:rgba(0,229,176,.3);transform:translateY(-4px);box-shadow:0 14px 40px rgba(0,0,0,.35)}
+.cert-img-wrap{width:100%;height:175px;background:var(--surface2);overflow:hidden}
+.cert-img-wrap img{width:100%;height:100%;object-fit:cover;object-position:top center;transition:transform .3s}
+.cert-card:hover .cert-img-wrap img{transform:scale(1.04)}
+.cert-ph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:2.2rem;background:linear-gradient(135deg,#0a1a15,var(--surface2))}
+.cert-label{padding:.95rem 1rem}
+.cert-year{font-size:.58rem;color:var(--accent);letter-spacing:.15em;text-transform:uppercase;margin-bottom:.3rem}
+.cert-name{font-size:.8rem;font-weight:600;color:var(--white);line-height:1.35;margin-bottom:.2rem}
+.cert-issuer{font-size:.7rem;color:#555}
+.cert-arrow{position:absolute;top:.7rem;right:.8rem;font-size:.75rem;color:var(--border2);transition:color .2s}
+.cert-card:hover .cert-arrow{color:var(--accent)}
+/* Gold badge for top achievement */
+.cert-card.top{border-top:2px solid var(--gold)}
+.cert-card.top .cert-year{color:var(--gold)}
+
+/* ─── CONTACT ─── */
+#contact{border-top:1px solid var(--border)}
+.contact-box{background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:3.5rem}
+.contact-intro{font-size:.9rem;color:#5a5a5a;margin-bottom:2rem}
+.contact-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.9rem}
+.c-item{background:var(--surface2);border:1px solid var(--border);padding:1.2rem;border-radius:3px;text-decoration:none;transition:all .2s;display:block}
+.c-item:hover{border-color:var(--accent);background:var(--surface3)}
+.c-lbl{font-size:.58rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px}
+.c-val{font-size:.84rem;color:var(--text)}
+.c-val.ac{color:var(--accent)}
+
+/* ─── FOOTER ─── */
+footer{border-top:1px solid var(--border);padding:2rem 5%;text-align:center;font-size:.7rem;color:var(--muted);line-height:1.8}
+footer .ac{color:var(--accent)}
+
+/* ─── LIGHTBOX ─── */
+.lb{display:none;position:fixed;inset:0;background:rgba(0,0,0,.93);z-index:999;align-items:center;justify-content:center;backdrop-filter:blur(10px)}
+.lb.open{display:flex}
+.lb img{max-width:90vw;max-height:90vh;object-fit:contain;border-radius:4px;border:1px solid var(--border2)}
+.lb-x{position:absolute;top:1.2rem;right:1.5rem;font-size:2.2rem;color:var(--muted2);cursor:pointer;background:none;border:none;transition:color .2s;line-height:1}
+.lb-x:hover{color:var(--white)}
+
+/* ─── ANIMATIONS ─── */
+.fade-up{opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s ease}
+.fade-up.v{opacity:1;transform:none}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:960px){
+  .about-layout,.skills-grid{grid-template-columns:1fr}
+  .prog-grid,.certs-grid{grid-template-columns:1fr 1fr}
+  .design-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:640px){
+  .nav-links,.nav-cta{display:none}
+  .prog-grid,.certs-grid,.video-grid,.design-grid,.contact-grid{grid-template-columns:1fr}
+  .photo-row{grid-template-columns:repeat(2,1fr)}
+  .karya-tabs{flex-wrap:wrap;width:100%}
+  .ktab{flex:1;border-bottom:1px solid var(--border)}
+  .hero-stats{gap:1.5rem}
+}
+</style>
+</head>
+<body>
+
+<!-- LIGHTBOX -->
+<div class="lb" id="lb" onclick="closeLB()">
+  <button class="lb-x">×</button>
+  <img id="lb-img" src="" alt="">
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">MH</div>
+  <ul class="nav-links">
+    <li><a href="#about">Profil</a></li>
+    <li><a href="#experience">Pengalaman</a></li>
+    <li><a href="#karya">Karya</a></li>
+    <li><a href="#skills">Keahlian</a></li>
+    <li><a href="#certificates">Sertifikat</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Hubungi →</a>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section id="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+
+  <!-- POIN 6: Predikat Pujian sebagai callout utama -->
+  <div class="hero-distinction">
+    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+    Mahasiswa Berprestasi — Predikat Pujian · IPK 3,69 / 4,00
+  </div>
+
+  <!-- POIN 1: Target posisi jelas -->
+  <div class="hero-position">
+    <span class="hero-dot"></span>
+    Content Strategist &nbsp;·&nbsp; Copywriter &nbsp;·&nbsp; Edu-Content Creator
+  </div>
+
+  <h1 class="hero-name">MUHAMMAD<br><span class="ac">HASBY</span></h1>
+
+  <!-- POIN 8: Bio dengan personal hook -->
+  <p class="hero-hook">
+    Saya percaya <span class="hl">kata yang tepat bisa mengubah cara orang berpikir</span> — dan visual yang kuat bisa menggerakkan mereka untuk bertindak.<br>
+    <strong>S.Pd. Pendidikan Bahasa & Sastra Indonesia, Undiksha 2025.</strong><br>
+    Berpengalaman membangun program literasi, memproduksi konten digital, dan merancang komunikasi strategis di lapangan melalui program nasional Kemendikbudristek.
+  </p>
+
+  <div class="btns">
+    <a href="#karya" class="btn-p">Lihat Karya Saya →</a>
+    <a href="https://drive.google.com/file/d/1ahR1cqYalGoq8qvkexm893OzgMIlfDxd/view" target="_blank" class="btn-o">Download CV ↓</a>
+  </div>
+
+  <div class="hero-stats">
+    <div>
+      <div class="stat-n gold">3,69</div>
+      <div class="stat-l">IPK — Predikat Pujian</div>
+    </div>
+    <div>
+      <div class="stat-n">7</div>
+      <div class="stat-l">Bulan Pengalaman KM7</div>
+    </div>
+    <div>
+      <div class="stat-n">6</div>
+      <div class="stat-l">Program Kerja Terlaksana</div>
+    </div>
+    <div>
+      <div class="stat-n">4</div>
+      <div class="stat-l">Karya Video & Desain</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ ABOUT ══ -->
+<section id="about">
+  <div class="s-wrap">
+    <div class="s-tag fade-up">// 01 — Tentang Saya</div>
+    <h2 class="s-title fade-up">SIAPA<br>SAYA?</h2>
+    <div class="about-layout">
+      <div class="fade-up">
+        <div class="photo-main-wrap" onclick="openLB('https://lh3.googleusercontent.com/d/1bv_BCKj6qnUnM__LETq06jXTQqOHHZNw')">
+          <img src="https://lh3.googleusercontent.com/d/1bv_BCKj6qnUnM__LETq06jXTQqOHHZNw" alt="Muhammad Hasby"
+            onerror="this.parentNode.innerHTML='<div class=\'ph-init\'>MH</div>'">
+        </div>
+        <div class="photo-row">
+          <div class="photo-thumb" onclick="openLB('https://lh3.googleusercontent.com/d/19VYR-4jMpsv-eqT4zy1gyBOS7gnRIXs-')">
+            <img src="https://lh3.googleusercontent.com/d/19VYR-4jMpsv-eqT4zy1gyBOS7gnRIXs-" alt="Hasby" onerror="this.parentNode.innerHTML='<div class=\'ph-init\'>MH</div>'">
+          </div>
+          <div class="photo-thumb" onclick="openLB('https://lh3.googleusercontent.com/d/1L608znDal3Biu1RAHBV5IofPzbYRgt6K')">
+            <img src="https://lh3.googleusercontent.com/d/1L608znDal3Biu1RAHBV5IofPzbYRgt6K" alt="Hasby" onerror="this.parentNode.innerHTML='<div class=\'ph-init\'>MH</div>'">
+          </div>
+          <div class="photo-thumb" onclick="openLB('https://lh3.googleusercontent.com/d/1jpDvpeiF6Us6w80zsJsUjyvo7_-rjBER')">
+            <img src="https://lh3.googleusercontent.com/d/1jpDvpeiF6Us6w80zsJsUjyvo7_-rjBER" alt="Hasby" onerror="this.parentNode.innerHTML='<div class=\'ph-init\'>MH</div>'">
+          </div>
+          <div class="photo-thumb" onclick="openLB('https://lh3.googleusercontent.com/d/1hTL7Nfp5xSbFcD2VIx49igyC_bqO1228')">
+            <img src="https://lh3.googleusercontent.com/d/1hTL7Nfp5xSbFcD2VIx49igyC_bqO1228" alt="Hasby" onerror="this.parentNode.innerHTML='<div class=\'ph-init\'>MH</div>'">
+          </div>
+        </div>
+      </div>
+      <div class="fade-up">
+        <!-- POIN 6: Distinction badge di profil -->
+        <div class="distinction-badge">
+          ✦ Mahasiswa Berprestasi — Predikat Pujian · Undiksha 2025
+        </div>
+        <!-- POIN 8: Bio dengan karakter & personal voice -->
+        <p class="about-bio">
+          Lulusan <strong>Pendidikan Bahasa dan Sastra Indonesia (S.Pd.)</strong> yang tidak sekadar fasih berbahasa — tetapi terlatih memahami bagaimana bahasa <span class="hl">membentuk persepsi, membangun narasi, dan menciptakan dampak</span>.
+          <br><br>
+          Digembleng langsung di lapangan melalui <strong>Kampus Mengajar Angkatan 7</strong> — program nasional Kemendikbudristek yang diikuti ribuan mahasiswa dari seluruh Indonesia dengan seleksi ketat — saya mengelola komunikasi strategis, memproduksi konten digital, dan merancang program literasi yang terukur hasilnya.
+          <br><br>
+          Bagi saya, <span class="gold">pekerjaan terbaik adalah yang meninggalkan sesuatu setelah selesai</span> — sebuah perpustakaan yang lebih tertata, sebuah konten yang masih ditonton, sebuah program yang siswa kenang.
+        </p>
+        <div class="info-grid">
+          <div class="info-box">
+            <div class="info-lbl">Universitas</div>
+            <div class="info-val">Undiksha Singaraja · 2021–2025</div>
+          </div>
+          <div class="info-box">
+            <div class="info-lbl">Program Studi</div>
+            <div class="info-val">Pend. Bahasa & Sastra Indonesia</div>
+          </div>
+          <div class="info-box">
+            <div class="info-lbl">IPK & Predikat</div>
+            <div class="info-val" style="color:var(--gold)">3,69 / 4,00 — Pujian ✦</div>
+          </div>
+          <div class="info-box">
+            <div class="info-lbl">Domisili</div>
+            <div class="info-val">Jakarta Timur, Indonesia</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ EXPERIENCE ══ -->
+<section id="experience">
+  <div class="s-wrap">
+    <div class="s-tag fade-up">// 02 — Pengalaman Kerja</div>
+    <h2 class="s-title fade-up">REKAM JEJAK<br>PROFESIONAL</h2>
+
+    <!-- POIN 3: KM7 framing sebagai program kompetitif nasional -->
+    <div class="km7-banner fade-up">
+      <div class="km7-icon">🏛️</div>
+      <div>
+        <div class="km7-banner-title">Tentang Kampus Mengajar Angkatan 7</div>
+        <div class="km7-banner-desc">
+          Program unggulan <strong>Merdeka Belajar Kampus Merdeka (MBKM)</strong> oleh Kemendikbudristek RI. Diikuti ratusan ribu mahasiswa dari seluruh Indonesia dengan proses seleksi ketat berbasis kompetensi akademik dan non-akademik. Peserta ditempatkan di sekolah-sekolah yang membutuhkan penguatan literasi dan numerasi di seluruh penjuru Indonesia.
+        </div>
+      </div>
+    </div>
+
+    <!-- KM7 Card -->
+    <div class="exp-card fade-up">
+      <div class="exp-header">
+        <div class="exp-top">
+          <div class="exp-title">Guru Mitra (Teaching Assistant) & Tim PUBDOK</div>
+          <div class="exp-period">Jan 2024 — Jul 2024</div>
+        </div>
+        <div class="exp-org">Kementerian Pendidikan, Kebudayaan, Riset, dan Teknologi (Kemendikbudristek) · Kampus Mengajar Angkatan 7</div>
+        <div class="exp-badges">
+          <span class="badge">Kampus Mengajar 7</span>
+          <span class="badge">MBKM</span>
+          <span class="badge">Teaching Assistant</span>
+          <span class="badge">Publikasi & Dokumentasi</span>
+          <span class="badge">Content Production</span>
+        </div>
+
+        <!-- POIN 2: Impact bullets dengan angka dan hasil terukur -->
+        <ul class="exp-impacts">
+          <li class="impact-item">
+            <div class="impact-metric">
+              <span class="impact-num">6</span>
+              <span class="impact-unit">Program</span>
+            </div>
+            <div class="impact-text">Merancang dan mengeksekusi <strong>6 program kerja</strong> dari nol hingga selesai: Persami & Festival Literasi Numerasi, Apotek Hidup, Trivial Wall, Penataan Perpustakaan, Ular Tangga Numerasi, dan Membaca Nyaring.</div>
+          </li>
+          <li class="impact-item">
+            <div class="impact-metric">
+              <span class="impact-num">2</span>
+              <span class="impact-unit">Kelas AKM</span>
+            </div>
+            <div class="impact-text">Memfasilitasi <strong>Pre-Test & Post-Test AKM (Asesmen Kompetensi Minimum)</strong> untuk mengukur peningkatan literasi dan numerasi siswa secara berbasis data — bukan hanya kesan subjektif.</div>
+          </li>
+          <li class="impact-item">
+            <div class="impact-metric">
+              <span class="impact-num">4+</span>
+              <span class="impact-unit">Konten</span>
+            </div>
+            <div class="impact-text">Memproduksi <strong>4+ konten dokumentasi video</strong> (teaser, dokumentasi program, video akhir) dan aset grafis untuk kebutuhan publikasi dan pelaporan resmi ke Kemendikbudristek.</div>
+          </li>
+          <li class="impact-item">
+            <div class="impact-metric">
+              <span class="impact-num">1</span>
+              <span class="impact-unit">Laporan</span>
+            </div>
+            <div class="impact-text">Menyusun <strong>Laporan Akhir Kampus Mengajar 7</strong> secara komprehensif mencakup seluruh program kerja, analisis dampak, dan rekomendasi untuk keberlanjutan program di sekolah penugasan.</div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Program Docs -->
+      <div class="prog-section">
+        <div class="prog-hdr">Dokumentasi Program Kerja</div>
+        <div class="prog-grid">
+          <a class="prog-card" onclick="openLB('https://lh3.googleusercontent.com/d/16aUGLRMjXhDccOckCbTahbLz-oXPdfW8')" href="#">
+            <img class="prog-img" src="https://lh3.googleusercontent.com/d/16aUGLRMjXhDccOckCbTahbLz-oXPdfW8" alt="Persami" onerror="this.outerHTML='<div class=\'prog-img-ph\'>🏕️</div>'">
+            <div class="prog-body"><div class="prog-tag">Program Unggulan</div><div class="prog-name">Persami & Festival Literasi Numerasi</div><div class="prog-desc">Perkemahan edukatif terintegrasi literasi & numerasi.</div></div>
+          </a>
+          <a class="prog-card" onclick="openLB('https://lh3.googleusercontent.com/d/1YQb-CFydLY8rW855Q9PTjSmrCROhmfMQ')" href="#">
+            <img class="prog-img" src="https://lh3.googleusercontent.com/d/1YQb-CFydLY8rW855Q9PTjSmrCROhmfMQ" alt="Apotek Hidup" onerror="this.outerHTML='<div class=\'prog-img-ph\'>🌿</div>'">
+            <div class="prog-body"><div class="prog-tag">Program Lingkungan</div><div class="prog-name">Apotek Hidup</div><div class="prog-desc">Penanaman tanaman obat sebagai media edukasi keanekaragaman hayati lokal.</div></div>
+          </a>
+          <a class="prog-card" onclick="openLB('https://lh3.googleusercontent.com/d/1IRJ1ff1RFlu93EZ9W07KTPBvy6X28iXC')" href="#">
+            <img class="prog-img" src="https://lh3.googleusercontent.com/d/1IRJ1ff1RFlu93EZ9W07KTPBvy6X28iXC" alt="Perpustakaan" onerror="this.outerHTML='<div class=\'prog-img-ph\'>📚</div>'">
+            <div class="prog-body"><div class="prog-tag">Program Literasi</div><div class="prog-name">Penataan Perpustakaan</div><div class="prog-desc">Revitalisasi perpustakaan agar lebih nyaman, tertata, dan mudah diakses.</div></div>
+          </a>
+          <a class="prog-card" onclick="openLB('https://lh3.googleusercontent.com/d/1KRe8ejtEIjeGghLmqJPtHsMQulW1hekY')" href="#">
+            <img class="prog-img" src="https://lh3.googleusercontent.com/d/1KRe8ejtEIjeGghLmqJPtHsMQulW1hekY" alt="Trivial Wall" onerror="this.outerHTML='<div class=\'prog-img-ph\'>🧩</div>'">
+            <div class="prog-body"><div class="prog-tag">Media Interaktif</div><div class="prog-name">Trivial Wall</div><div class="prog-desc">Instalasi dinding kuis yang mendorong budaya belajar mandiri di sekolah.</div></div>
+          </a>
+          <a class="prog-card" onclick="openLB('https://lh3.googleusercontent.com/d/1IFnSHRWvo72BSKzhaLqPJVoxifG6xnVZ')" href="#">
+            <img class="prog-img" src="https://lh3.googleusercontent.com/d/1IFnSHRWvo72BSKzhaLqPJVoxifG6xnVZ" alt="Ular Tangga" onerror="this.outerHTML='<div class=\'prog-img-ph\'>🎲</div>'">
+            <div class="prog-body"><div class="prog-tag">Media Pembelajaran</div><div class="prog-name">Ular Tangga Numerasi & Tebak Rumus</div><div class="prog-desc">Permainan berbasis numerasi yang membuat matematika menyenangkan.</div></div>
+          </a>
+          <a class="prog-card" onclick="openLB('https://lh3.googleusercontent.com/d/1km_WZhINAMWIfh1PqT6zHa195BMCs8ue')" href="#">
+            <img class="prog-img" src="https://lh3.googleusercontent.com/d/1km_WZhINAMWIfh1PqT6zHa195BMCs8ue" alt="Membaca Nyaring" onerror="this.outerHTML='<div class=\'prog-img-ph\'>📖</div>'">
+            <div class="prog-body"><div class="prog-tag">Program Literasi</div><div class="prog-name">Membaca Nyaring</div><div class="prog-desc">Program rutin literasi yang meningkatkan kepercayaan diri baca siswa.</div></div>
+          </a>
+        </div>
+      </div>
+
+      <div class="report-bar">
+        <div class="report-info">
+          <div class="r-lbl">Dokumen Resmi Kemendikbudristek</div>
+          <div class="r-name">Laporan Akhir Kampus Mengajar Angkatan 7</div>
+          <div class="r-sub">Muhammad Hasby · 2024</div>
+        </div>
+        <a href="https://drive.google.com/file/d/1teU434VPyimeXEFRS9ubtidQdaXleXnQ/view" target="_blank" class="btn-sm">Buka Laporan ↗</a>
+      </div>
+    </div>
+
+    <!-- POIN 7: Reframe Rumah Makan -->
+    <div class="exp-card secondary fade-up" style="margin-bottom:0">
+      <div class="exp-header" style="border-bottom:none">
+        <div class="exp-top">
+          <div class="exp-title">Crew Operasional Restoran</div>
+          <div class="exp-period">Des 2023 — Jan 2024</div>
+        </div>
+        <div class="exp-org">Rumah Makan Padang &nbsp;·&nbsp; Jakarta</div>
+        <ul class="exp-impacts">
+          <li class="impact-item">
+            <div class="impact-metric" style="background:rgba(255,255,255,.04);border-color:var(--border2)">
+              <span class="impact-num" style="font-size:1.1rem;color:#888">50–80</span>
+              <span class="impact-unit">Pelanggan/shift</span>
+            </div>
+            <div class="impact-text">Mengelola pelayanan pelanggan volume tinggi dengan standar kecepatan dan keramahan dalam tekanan jam sibuk — melatih <strong>kemampuan multitasking, prioritas, dan komunikasi cepat</strong>.</div>
+          </li>
+          <li class="impact-item">
+            <div class="impact-metric" style="background:rgba(255,255,255,.04);border-color:var(--border2)">
+              <span class="impact-num" style="font-size:1.1rem;color:#888">Kas</span>
+              <span class="impact-unit">Harian</span>
+            </div>
+            <div class="impact-text">Bertanggung jawab atas <strong>rekonsiliasi kas, pencatatan pendapatan, dan pelaporan keuangan harian</strong> — mengembangkan ketelitian dan integritas dalam pengelolaan data finansial.</div>
+          </li>
+        </ul>
+        <div class="transfer-tags">
+          <span class="ttag">Manajemen Tekanan</span>
+          <span class="ttag">Rekonsiliasi Data</span>
+          <span class="ttag">Komunikasi Cepat</span>
+          <span class="ttag">Manajemen Inventaris</span>
+          <span class="ttag">Customer Service</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ KARYA / PROYEK (POIN 4 — seksi baru) ══ -->
+<section id="karya" style="border-top:1px solid var(--border)">
+  <div class="s-wrap">
+    <div class="s-tag fade-up">// 03 — Portofolio Karya</div>
+    <h2 class="s-title fade-up">KARYA &<br>PROYEK NYATA</h2>
+
+    <div class="karya-tabs fade-up">
+      <button class="ktab active" onclick="switchTab(this,'tab-video')">🎬 Video Produksi</button>
+      <button class="ktab" onclick="switchTab(this,'tab-design')">🎨 Desain Visual</button>
+    </div>
+
+    <!-- VIDEO TAB -->
+    <div class="karya-panel active" id="tab-video">
+      <div class="video-grid">
+        <div class="video-card fade-up">
+          <div class="video-frame">
+            <iframe src="https://drive.google.com/file/d/1WN55-NjtQBVeI4JL8yiBf_vIs9Uh4keZ/preview" allow="autoplay" allowfullscreen></iframe>
+          </div>
+          <div class="video-label">
+            <div class="video-tag">Aftermovie · KM7</div>
+            <div class="video-name">Video Akhir — Dokumentasi Program KM7</div>
+            <div class="video-desc">Video dokumentasi final seluruh rangkaian program Kampus Mengajar Angkatan 7 — diproduksi sebagai laporan visual resmi dan arsip program.</div>
+          </div>
+        </div>
+        <div class="video-card fade-up">
+          <div class="video-frame">
+            <iframe src="https://drive.google.com/file/d/1N9rE4xDNRCcXyGE_NOxRM-7ok6G-3vVM/preview" allow="autoplay" allowfullscreen></iframe>
+          </div>
+          <div class="video-label">
+            <div class="video-tag">Dokumentasi Kegiatan · KM7</div>
+            <div class="video-name">Pre-Test AKM Kelas 8A</div>
+            <div class="video-desc">Dokumentasi pelaksanaan Pre-Test Asesmen Kompetensi Minimum (AKM) sebagai baseline pengukuran literasi dan numerasi siswa sebelum intervensi program.</div>
+          </div>
+        </div>
+        <div class="video-card fade-up">
+          <div class="video-frame">
+            <iframe src="https://drive.google.com/file/d/1A5uNladoTt-zBWPO54YgkfUvCl2tXQON/preview" allow="autoplay" allowfullscreen></iframe>
+          </div>
+          <div class="video-label">
+            <div class="video-tag">Dokumentasi Program · KM7</div>
+            <div class="video-name">Penataan Perpustakaan — Sesi 1</div>
+            <div class="video-desc">Dokumentasi proses revitalisasi perpustakaan sekolah — dari kondisi awal hingga pengorganisasian koleksi buku dan penataan ruang baca.</div>
+          </div>
+        </div>
+        <div class="video-card fade-up">
+          <div class="video-frame">
+            <iframe src="https://drive.google.com/file/d/1ctm2pblkmaTEOx4_G3ebib5ILgQGeYsZ/preview" allow="autoplay" allowfullscreen></iframe>
+          </div>
+          <div class="video-label">
+            <div class="video-tag">Dokumentasi Program · KM7</div>
+            <div class="video-name">Penataan Perpustakaan — Sesi 2</div>
+            <div class="video-desc">Kelanjutan dokumentasi program penataan perpustakaan — hasil akhir transformasi ruang baca yang lebih nyaman dan mudah diakses seluruh siswa.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DESIGN TAB (POIN 4: karya desain PUBDOK) -->
+    <div class="karya-panel" id="tab-design">
+      <div class="design-grid">
+        <div class="design-card" onclick="openLB('https://lh3.googleusercontent.com/d/1jpDvpeiF6Us6w80zsJsUjyvo7_-rjBER')">
+          <img class="design-img" src="https://lh3.googleusercontent.com/d/1jpDvpeiF6Us6w80zsJsUjyvo7_-rjBER" alt="Desain 1" onerror="this.outerHTML='<div class=\'design-img-ph\'>🎨</div>'">
+          <div class="design-label"><div class="design-cat">Aset Visual · PUBDOK KM7</div><div class="design-name">Desain Publikasi — Konten Program</div></div>
+        </div>
+        <div class="design-card" onclick="openLB('https://lh3.googleusercontent.com/d/1hTL7Nfp5xSbFcD2VIx49igyC_bqO1228')">
+          <img class="design-img" src="https://lh3.googleusercontent.com/d/1hTL7Nfp5xSbFcD2VIx49igyC_bqO1228" alt="Desain 2" onerror="this.outerHTML='<div class=\'design-img-ph\'>🖼️</div>'">
+          <div class="design-label"><div class="design-cat">Aset Visual · PUBDOK KM7</div><div class="design-name">Desain Grafis — Materi Promosi</div></div>
+        </div>
+        <div class="design-card" onclick="openLB('https://lh3.googleusercontent.com/d/16aUGLRMjXhDccOckCbTahbLz-oXPdfW8')">
+          <img class="design-img" src="https://lh3.googleusercontent.com/d/16aUGLRMjXhDccOckCbTahbLz-oXPdfW8" alt="Festival Literasi" onerror="this.outerHTML='<div class=\'design-img-ph\'>🏕️</div>'">
+          <div class="design-label"><div class="design-cat">Dokumentasi Visual · KM7</div><div class="design-name">Persami & Festival Literasi Numerasi</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SKILLS ══ -->
+<section id="skills">
+  <div class="s-wrap">
+    <div class="s-tag fade-up">// 04 — Keahlian</div>
+    <h2 class="s-title fade-up">SKILL &<br>KOMPETENSI</h2>
+    <div class="skills-grid fade-up">
+      <div class="skill-group">
+        <div class="sg-title"><span>🎨</span> Konten & Kreatif</div>
+        <div class="stags">
+          <span class="stag proof">Copywriting</span>
+          <span class="stag proof">Content Strategy</span>
+          <span class="stag proof">Canva Design</span>
+          <span class="stag proof">Video Production</span>
+          <span class="stag proof">CapCut · VN Editor</span>
+          <span class="stag proof">Social Media Management</span>
+          <span class="stag proof">Brand Visual Identity</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="sg-title"><span>💼</span> Profesional & Manajerial</div>
+        <div class="stags">
+          <span class="stag proof">Program Planning & Execution</span>
+          <span class="stag proof">Administration Management</span>
+          <span class="stag proof">Public Speaking</span>
+          <span class="stag proof">Teaching Methodology</span>
+          <span class="stag proof">Pelaporan & Dokumentasi</span>
+          <span class="stag proof">Quality Control Konten</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="sg-title"><span>⚡</span> Software & Tools</div>
+        <div class="stags">
+          <span class="stag">Microsoft Word</span>
+          <span class="stag">Microsoft PowerPoint</span>
+          <span class="stag">Microsoft Excel</span>
+          <span class="stag">Google Workspace</span>
+          <span class="stag">Google Docs & Slides</span>
+          <span class="stag">Google Drive Management</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="sg-title"><span>📖</span> Bahasa, Sastra & Komunikasi</div>
+        <div class="stags">
+          <span class="stag proof">Bahasa Indonesia — Native</span>
+          <span class="stag">English — Conversational</span>
+          <span class="stag proof">Penulisan Kreatif & Naratif</span>
+          <span class="stag proof">Deklamasi & Cipta Puisi</span>
+          <span class="stag proof">Analisis Wacana & Sastra</span>
+        </div>
+      </div>
+    </div>
+    <p style="font-size:.7rem;color:var(--muted);margin-top:1rem">✦ Skill dengan border aksen = terbukti dalam pengalaman kerja nyata</p>
+  </div>
+</section>
+
+<!-- ══ CERTIFICATES (POIN 5 — tanpa Orientasi Mahasiswa) ══ -->
+<section id="certificates">
+  <div class="s-wrap">
+    <div class="s-tag fade-up">// 05 — Sertifikat & Penghargaan</div>
+    <h2 class="s-title fade-up">PENCAPAIAN &<br>PENGAKUAN</h2>
+    <div class="certs-grid fade-up">
+
+      <!-- TOP: Piagam Pujian - most prominent -->
+      <a href="https://drive.google.com/file/d/1J1G_FL8tuB7QUd_2hsRdX998csk6OE9g/view" target="_blank" class="cert-card top">
+        <span class="cert-arrow">↗</span>
+        <div class="cert-img-wrap">
+          <img src="https://lh3.googleusercontent.com/d/1J1G_FL8tuB7QUd_2hsRdX998csk6OE9g" alt="Piagam Pujian" onerror="this.parentNode.innerHTML='<div class=\'cert-ph\'>🏆</div>'">
+        </div>
+        <div class="cert-label">
+          <div class="cert-year" style="color:var(--gold)">✦ PRESTASI TERTINGGI · 2025</div>
+          <div class="cert-name">Mahasiswa Berprestasi — Predikat Pujian</div>
+          <div class="cert-issuer">Universitas Pendidikan Ganesha (Undiksha)</div>
+        </div>
+      </a>
+
+      <a href="https://drive.google.com/file/d/1Vn9MHNjpXkICxnDhn8enrFcCZ3UcnzIY/view" target="_blank" class="cert-card">
+        <span class="cert-arrow">↗</span>
+        <div class="cert-img-wrap">
+          <img src="https://lh3.googleusercontent.com/d/1Vn9MHNjpXkICxnDhn8enrFcCZ3UcnzIY" alt="Lokakarya Puisi" onerror="this.parentNode.innerHTML='<div class=\'cert-ph\'>📜</div>'">
+        </div>
+        <div class="cert-label">
+          <div class="cert-year">2022</div>
+          <div class="cert-name">Lokakarya Cipta & Deklamasi Puisi</div>
+          <div class="cert-issuer">Dinas Kebudayaan Provinsi Bali</div>
+        </div>
+      </a>
+
+      <a href="https://drive.google.com/file/d/1h_9yctKw2ZNyS6WQz2FLkvdLazEv1nid/view" target="_blank" class="cert-card">
+        <span class="cert-arrow">↗</span>
+        <div class="cert-img-wrap">
+          <img src="https://lh3.googleusercontent.com/d/1h_9yctKw2ZNyS6WQz2FLkvdLazEv1nid" alt="MGS" onerror="this.parentNode.innerHTML='<div class=\'cert-ph\'>🎭</div>'">
+        </div>
+        <div class="cert-label">
+          <div class="cert-year">2022</div>
+          <div class="cert-name">Piagam Malam Gelar Seni (MGS)</div>
+          <div class="cert-issuer">Festival Bahasa & Sastra · Undiksha</div>
+        </div>
+      </a>
+
+      <a href="https://drive.google.com/file/d/1V2-TVUU8cuZ85SiJZLNHvloEo7qR0jlp/view" target="_blank" class="cert-card">
+        <span class="cert-arrow">↗</span>
+        <div class="cert-img-wrap">
+          <img src="https://lh3.googleusercontent.com/d/1V2-TVUU8cuZ85SiJZLNHvloEo7qR0jlp" alt="Pengisi Acara" onerror="this.parentNode.innerHTML='<div class=\'cert-ph\'>🎤</div>'">
+        </div>
+        <div class="cert-label">
+          <div class="cert-year">2023</div>
+          <div class="cert-name">Piagam Pengisi Acara Festival Bahasa & Sastra</div>
+          <div class="cert-issuer">HMJ BSID · Undiksha</div>
+        </div>
+      </a>
+
+      <!-- POIN 5: Orientasi Mahasiswa DIHAPUS, diganti DIKSI yang lebih substantif -->
+      <div class="cert-card" style="cursor:default">
+        <div class="cert-img-wrap"><div class="cert-ph">📚</div></div>
+        <div class="cert-label">
+          <div class="cert-year">2024</div>
+          <div class="cert-name">Diskusi Kebahasaan & Kesastraan — DIKSI #13</div>
+          <div class="cert-issuer">HISKI Komisariat Bali</div>
+        </div>
+      </div>
+
+      <!-- Download CV card -->
+      <a href="https://drive.google.com/file/d/1ahR1cqYalGoq8qvkexm893OzgMIlfDxd/view" target="_blank" class="cert-card" style="display:flex;flex-direction:column;justify-content:center;align-items:center;min-height:280px;border-style:dashed;text-align:center;padding:2rem">
+        <div style="font-size:2rem;margin-bottom:.8rem">📄</div>
+        <div style="font-size:.65rem;text-transform:uppercase;letter-spacing:.15em;color:var(--accent);margin-bottom:.4rem">Dokumen Lengkap</div>
+        <div style="font-size:.88rem;font-weight:600;color:var(--white);margin-bottom:.3rem">Curriculum Vitae</div>
+        <div style="font-size:.73rem;color:#555;margin-bottom:1rem">Muhammad Hasby · 2025</div>
+        <span class="btn-sm" style="font-size:.62rem">Download CV ↓</span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ CONTACT ══ -->
+<section id="contact">
+  <div class="s-wrap">
+    <div class="contact-box">
+      <div class="s-tag fade-up">// 06 — Kontak</div>
+      <h2 class="s-title fade-up" style="margin-bottom:.5rem">MARI<br>TERHUBUNG</h2>
+      <p class="contact-intro fade-up">Terbuka untuk peluang kerja tetap, freelance, kolaborasi konten, dan diskusi profesional.</p>
+      <div class="contact-grid fade-up">
+        <a href="mailto:mhasbi608@gmail.com" class="c-item">
+          <div class="c-lbl">📧 Email</div>
+          <div class="c-val ac">mhasbi608@gmail.com</div>
+        </a>
+        <a href="https://wa.me/6285161284276" target="_blank" class="c-item">
+          <div class="c-lbl">💬 WhatsApp</div>
+          <div class="c-val">+62 851 6128 4276</div>
+        </a>
+        <a href="https://www.linkedin.com/in/muhammad-hasby-93698437b/" target="_blank" class="c-item">
+          <div class="c-lbl">💼 LinkedIn</div>
+          <div class="c-val ac">Muhammad Hasby</div>
+        </a>
+        <a href="https://drive.google.com/file/d/1ahR1cqYalGoq8qvkexm893OzgMIlfDxd/view" target="_blank" class="c-item">
+          <div class="c-lbl">📄 Curriculum Vitae</div>
+          <div class="c-val ac">Download CV ↓</div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 <span class="ac">Muhammad Hasby</span> · S.Pd. Pendidikan Bahasa & Sastra Indonesia</p>
+  <p style="margin-top:.3rem">Content Strategist · Copywriter · Edu-Content Creator · Jakarta Timur, Indonesia</p>
+</footer>
+
+<script>
+// Lightbox
+function openLB(src){
+  document.getElementById('lb-img').src=src;
+  document.getElementById('lb').classList.add('open');
+  document.body.style.overflow='hidden';
+  event && event.preventDefault();
+}
+function closeLB(){
+  document.getElementById('lb').classList.remove('open');
+  document.getElementById('lb-img').src='';
+  document.body.style.overflow='';
+}
+document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeLB(); });
+
+// Tabs
+function switchTab(btn, panelId){
+  document.querySelectorAll('.ktab').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.karya-panel').forEach(p=>p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById(panelId).classList.add('active');
+}
+
+// Scroll animation
+const obs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('v'); obs.unobserve(e.target); } });
+},{threshold:.07});
+document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
+
+// Active nav
+const secs = document.querySelectorAll('section[id]');
+const navAs = document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll',()=>{
+  let cur='';
+  secs.forEach(s=>{ if(window.scrollY>=s.offsetTop-80) cur=s.id; });
+  navAs.forEach(a=>{ a.classList.toggle('active', a.getAttribute('href')==='#'+cur); });
+},{passive:true});
+</script>
+</body>
+</html>
